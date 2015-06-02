@@ -20,15 +20,11 @@ function binarySearch(arr, target, min, max){
 		return 'invalid number';
 	}
 
-	if (target === mid){
-		return mid
-	}
-
 	if (target > mid){
-		min = mid;
+		min = mid + 1;
 		binarySearch (arr, target, min, max);
 	} else if (target < mid){
-		max = mid;
+		max = mid - 1;
 		binarySearch (arr, target, min, max);
 	} else {
 		return mid;
