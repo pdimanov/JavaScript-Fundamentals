@@ -2,10 +2,8 @@
 console.log('\nProblem 7: Binary search');
 
 var arr = [5, 12, 7, 123, 6, 1, 34, 2, 93],
-	target,
 	len = arr.length;
-	min = arr[0],
-	max = arr[len - 1];
+	
 
 function sortingArr(a, b){
 	return a - b;
@@ -14,18 +12,20 @@ function sortingArr(a, b){
 arr.sort(sortingArr);
 
 function binarySearch(arr, target, min, max){
-	var mid = arr[Math.floor((min + max)/2)];
+	var min = arr[0],
+		max = arr[len - 1],
+		mid = arr[Math.floor((min+max)/2)];
 	
 	if (target > max || target < min){
 		return 'invalid number';
 	}
 
-	if (target > mid){
+	if (arr[mid] < target){
 		min = mid + 1;
-		binarySearch (arr, target, min, max);
-	} else if (target < mid){
+		return binarySearch (arr, target, min, max);
+	} else if (arr[mid] > target){
 		max = mid - 1;
-		binarySearch (arr, target, min, max);
+		return binarySearch (arr, target, min, max);
 	} else {
 		return mid;
 	}
